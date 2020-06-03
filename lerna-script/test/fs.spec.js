@@ -1,5 +1,4 @@
-const {EOL} = require('os'),
-  {expect} = require('chai'),
+const {expect} = require('chai'),
   {aLernaProjectWith2Modules} = require('lerna-script-test-utils'),
   index = require('..')
 
@@ -54,7 +53,7 @@ describe('fs', () => {
           .writeFile(lernaPackage)('qwe.json', {key: 'bubu'})
           .then(() => index.fs.readFile(lernaPackage)('qwe.json'))
           .then(fileContent => {
-            expect(fileContent).to.match(new RegExp(`${EOL}$`))
+            expect(fileContent).to.match(new RegExp(`\n$`))
             expect(JSON.parse(fileContent)).to.deep.equal({key: 'bubu'})
           })
       })
